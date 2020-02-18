@@ -13,7 +13,7 @@ Toda a ideia começou como um projeto de conclusão de curso, mas será refatora
     -Solucionar o velho problema na borda.
     -Aperfeiçoar todos os outros FEATURES que devem estar precentes no laçamento do aplicativo.
  
-    _"Atualmente estou tentando ter um tempo para trabalhar neste meu projeto, espero que vocês entendam :)"_
+  _"Atualmente estou tentando ter um tempo para trabalhar neste meu projeto, espero que vocês entendam :)"_
     
     
 # Requesitos para instalação:

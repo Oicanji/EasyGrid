@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Comic</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%-include ./partials/includeCss%>
+</head>
+	<body>
+		<div class="container-fluid">
+			<br>
+			<div class="shadow">
+				<div class="row">
+					<div class="col-1" style="margin-left: 38%">
+						<p style="font-size:10px; color:rgb(255, 119, 119)"> Em Breve ... </p>
+						<img class='forOp' src='images/option.png' width="60%">
+						<p style="font-size:11px"> Editar Configurações </p>
+					</div>
+					<div class="col-1">
+						<p style="font-size:10px; color:rgb(255, 119, 119)"> Em Breve ... </p>
+						<img class='forOp' src='images/maisDeUm.png' width="60%">
+						<p style="font-size:11px"> Conecte-se !!! </p>
+					</div>
+					<div class="col-1">
+						<p style="font-size:10px; color:rgb(255, 119, 119)"> Em Breve ... </p>
+						<img class='forOp' src='images/backut.png' width="60%">
+						<p style="font-size:11px"> Veja seu Historico </p>
+					</div>
+				</div>
+			</div>
+			<br>
+			<div class="row shadow">
+				<div class="col-md-4 col-sm-12 canvaToOptions" id="edit">
+					<div class='options imageTreatment'>
+						<h6> Open Beta </h6>
+						<img class='forOp' src='images/ediatandoimg.png' width="50%">
+						<h6> Adicione Uma Imagem ao Servidor </h6>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-12 canvaToOptions" id="editMoreThanOne">
+					<div class='options uploadImages'>
+						<h6> Open Beta </h6>
+						<img class='forOp' src='images/subirmaisimg.png' width="50%">
+						<h6> Galeria de Imagens e Préfabs </h6>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-12 canvaToOptions" id="gridCreator">
+          <div class='options makeGrid'>
+						<h6> Open Beta </h6>
+						<img class='forOp' src='images/gridmaker.png' width="50%">
+						<h6> Crie Seu Layout </h6>
+          </div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="footerCredits">
+			Software produzido por I.Kirhiakos.S.R em parceria do Instituto Federal de Santa Catarina.
+			<br>
+			"Uso livre do codigo no <a href="https://github.com/Oicanji/EasyGrid.git">repositório público do git aqui!</a>"
+		</div>
+		<br>
+   		<%-include ./partials/includeScript%>
+		<%-include ./modals/editImg.ejs%>
+		<%-include ./modals/editImgApi.ejs%>
+
+		<script>
+			$("#gridCreator").click(function(){
+				window.location.href = "/grid"
+			})
+
+			$("#edit").click(function(){
+				$('.EditImg').modal('show')
+			});
+		</script>
+
+	</body>
+</html>

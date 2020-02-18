@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Comic</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%-include ./partials/includeCss%>
+  </head>
+	<body>
+		<div class="container">
+      <br><br>
+      <div class="shadow">
+        <div id="canvasDiv">
+
+        </div>
+        <div class="optionsCanvasNew">
+          <form id="formInutil" autocomplete="off">
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Formato</label>
+                <br>
+                <select class="form-control" id="resolucao">
+
+                  <option value="1">Folha na Vertical</option>
+                  <option value="2">Folha na Horizontal</option>
+                  <option value="3">Quadrado</option>
+                  <option value="4">Tirinha</option>
+                  <option value="5">Personalizada</option>
+                </select>
+                <div class="rePersonalizar">
+                  <input class="inp" id="newWidth" type="number" placeholder="Largura"/>
+                  <input class="inp" id="newHeight" type="number" placeholder="Altura"/>
+                </div>
+              </div>
+              <hr class="clearboth">
+
+          </form>
+          <div class="row">
+            <div class="col-5" style="height: 30px">
+              <input class="autoRecorrect" type="checkbox" autocomplete="off">
+              <span> Auto Corrigir a Distancia? </span>
+            </div>
+            <div class="col-7 linhes">
+
+            </div>
+          </div>
+          <br>
+          <button type="button" class="btn btn-outline-light backbutton">Voltar</button>
+
+          <button type="button" class="btn btn-outline-light erase">Limpar</button>
+
+          <button type="button" class="btn btn-outline-light letsAnalize">Prosseguir</button>
+          <br><br>
+        </div>
+
+    </div>
+    <%-include ./partials/includeScript%>
+    <script src="lib/js/canvasNew.js"></script>
+    <script>
+      window.errorMargin = 2
+      $(".backbutton").click(function(){
+        window.location.href = "/grid"
+      })
+      min = Math.ceil(0);
+      max = Math.floor(10);
+      tips = Math.floor(Math.random() * (max - min)) + min;
+
+      switch(tips){
+        case 5:
+          callAlert('info', 'Para maior precisão, faça a linha mais perto da borda possível, logo logo, na hora de editar você ainda poderá aumentar ou diminuir seus layouts.', 20)
+          break;
+      }
+    </script>
+  </body>
+</html>

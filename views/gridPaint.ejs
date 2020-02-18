@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Comic</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%-include ./partials/includeCss%>
+  </head>
+	<body>
+    <br>
+    <div class="menuOptions"> <span class="save" onclick="menuClick('save')"> Salvar e Sair <i class="icofont-save"></i></span> | <span class="uploadImgs" onclick="menuClick('uploadImgs')">Inserir <i class="icofont-crop"></i></span> | <span class="moveImgs" onclick="menuClick('moveImgs')">Editar <i class="icofont-edit"></i></span> </div>
+    <div class="menuTools"></div>
+    <div class="menuToolsPlus"></div>
+    <div class="viewerAll shadow-lg">
+      <div class="marginView">
+
+      </div>
+    </div>
+    <div class="squareShowImg"><div class="showImg"></div></div>
+    <%-include ./partials/includeScript%>
+    <script src="lib/js/ImgInsertActions.js"></script>
+    <script src="lib/js/ImgEditActions.js"></script>
+    <script src="lib/js/ImgSave.js"></script>
+    <script src="lib/js/IBFabric.js"></script>
+    <script src="lib/js/paint.js"></script>
+    <script src="lib/js/fabric.js"></script>
+    <script src="lib/js/html2canvas.min.js"></script>
+  </body>
+</html>

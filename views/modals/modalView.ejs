@@ -1,0 +1,44 @@
+<div class="modal fade showSlide" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="headermodal"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="la la-remove"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div id="canvasDiv">
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light m-btn" data-dismiss="modal">Voltar</button>
+                <div class="buttonsSlide">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+    function PreviewShow(url){
+        $('#canvasDiv').html(`
+        <img src="${url}" class="shadow imgEdit" style="margin: 10px auto; text-aling:center">
+        `)
+        $('.buttonsSlide').html(`
+        <button class="btn btn-light m-btn" onclick="goEdit('${url}')"> Editar esta Imagem </button
+        `)
+        $('#headermodal').html(`
+        <h2> Pré Visualização de Imagem </h2>
+        <p style="font-size:15px"> url da imagem: "${url}" .</p>
+        `)
+    }
+    function goEdit(url){
+        console.log(url)
+    }
+</script>

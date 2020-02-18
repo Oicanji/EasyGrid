@@ -1,0 +1,446 @@
+
+body{
+	background-color: #272727;
+	font-family: 'Monda', sans-serif;
+	color: white;
+	text-align: center;
+}
+.title{
+	text-shadow: 0 1px 0 #777, 0 2px 0 #777,
+	0 3px 0 #777, 0 4px 0 #777, 0 5px 0 #777,
+	0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1),
+	0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2),
+	0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2),
+	0 20px 20px rgba(0,0,0,.15);
+}
+.canvaToOptions{
+	padding: 40px;
+}
+.options{
+	border: #272727 solid 12px;
+	border-radius: 6px;
+	padding: 40px;
+	transition: all 0.4s ease;
+}
+.izi{
+	border: #272727 solid 10px;
+	border-radius: 3px;
+	padding: 20px;
+	transition: all 0.3s ease;
+}
+.options:hover{
+	background-color: #333333;
+	box-shadow: inset 0 0 0 16px #3a3a3a;
+	border: #3a3a3a solid 12px;
+}
+img.forOp{
+	margin: 20% 0px 20% 0px;
+}
+img.forOpizi{
+	margin: 8% 0px 8% 0px;
+}
+.modal-content{
+	background-color: #272727;
+}
+.modal-header{
+	border-bottom: 1px solid #333333;
+}
+.modal-footer{
+	border-top: 1px solid #333333;
+}
+
+.area-upload{
+	box-shadow: 0 5px 20px rgba(0,0,0,.2);
+	margin: 20px auto;
+	padding: 20px;
+	box-sizing: border-box;
+
+	width: 100%;
+	max-width: 700px;
+	position: relative;
+}
+
+.area-upload label.label-upload{
+	border: 2px dashed #b3b3b3;
+	min-height: 400px;
+	text-align: center;
+	width: 100%;
+
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	color: #cccccc;
+	position: relative;
+
+	-webkit-transition: .3s all;
+	-moz-transition: .3s all;
+	-o-transition: .3s all;
+	transition: .3s all;
+}
+
+.area-upload label.label-upload.highlight{
+	background-color: #999999;
+}
+
+.area-upload label.label-upload *{
+	pointer-events: none;
+}
+.area-upload input{
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	-webkit-appearance: none;
+	opacity: 0;
+}
+.zoneDotted{
+	height: 660px;
+	width: 660px;
+}
+#imgCanva{
+	height: 95%;
+	width: 100%;
+	position: relative;
+	background-image: url("../../images/backgroundDashed.png");
+	background-size: cover;
+}
+.returnTime{
+	position: absolute;
+	right: 2%;
+	top: 2%;
+	width: 140px;
+	border-radius: 10px;
+	background-color: #35a653;
+	padding: 4px;
+	color: white;
+	display: block;
+	cursor: pointer;
+	-moz-outline-radius: 15px;
+}
+.returnTime:hover{
+	background-color: #58cf78;
+	outline: 3px solid #8bf8a8;
+
+	transition: all 0.1s ease;
+
+}
+.saveImg{
+	position: absolute;
+	left: 2%;
+	top: 2%;
+	width: 70px;
+	height: 70px;
+	font-size: 3em;
+	border-radius: 10px;
+	background-color: #21a1eb;
+	color: white;
+	display: block;
+	cursor: pointer;
+	-moz-outline-radius: 15px;
+}
+.saveImg:hover{
+	background-color: #49aee9;
+	outline: 3px solid #76bde6;
+
+	transition: all 0.1s ease;
+
+}
+#canvasDiv{
+	height: 650px;
+	width: 650px;
+	position: relative;
+	background-image: url("../../images/backgroundDashed.png");
+	background-size: cover;
+}
+#imgEdit{
+	max-height: 94%;
+	max-width: 94%;
+	line-height: 182px;
+}
+.imgEdit{
+	text-align: center;
+	max-width: 90%;
+	max-height: 90%;
+	min-width: 50%;
+	min-height: 50%;
+	position: absolute;
+	left: 50%;
+	top: 48.5%;
+	transform: translate(-50%,-50%);
+}
+.canvasNew{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	margin: 0;
+}
+.c1{
+	height:525px;
+}
+.gallery{
+	overflow: auto;
+	height: 245px;
+}
+.galleryViewer{
+	text-align: center;
+	max-width: 90%;
+	max-height: 90%;
+	margin: 10px;
+}
+.square{
+	background-image: url("../../images/backgroundDashed.png");
+	background-size: cover;
+	height: 185px;
+	width: 185px;
+	float: left;
+	margin: 10px;
+	line-height: 182px;
+}
+
+.prefabs{
+	overflow: auto;
+	height: 245px;
+}
+
+.nicescroll-rails-vr .nicescroll-cursors {
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 75%, transparent);
+    animation: pace-stripe-animation 1000ms linear infinite;
+	background-size: 20px 20px;
+	margin-left: 3px;
+  }
+
+  @keyframes pace-stripe-animation {
+    from { background-position-y: 0; }
+	to   { background-position-y: 100%; }
+  }
+
+  body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+#canvasDiv{
+	margin-right: auto;
+	margin-left: auto;
+}
+#canvas{
+	border: rgb(43, 43, 43) solid 3px;
+}
+#canvas:hover{
+	border: rgb(136, 136, 136) dashed 3px;
+	transition: all 0.6s ease;
+}
+.optionsCanvasNew{
+	margin-right: auto;
+	margin-left: auto;
+	width: 50%
+}
+.modal-dialog {
+  max-width: 70%;
+  max-height: 70%;
+  padding: 0;
+}
+
+.modal-content {
+  max-height: 70%;
+  border-radius: 0;
+}
+#resolucao{
+	float: left;
+}
+.rePersonalizar{
+	width: 0px;
+	display:none;
+	float: right;
+}
+.inp{
+	width: 100px;
+}
+.clearboth{
+	clear:both;
+}
+.area-ajust{
+	position: relative;
+	text-align: left
+}
+.filters{
+	position: absolute;
+	top: 6%;
+	left: 0;
+	z-index: 2;
+	width: 100%;
+	height: 94%;
+	background-color: #272727;
+	overflow: auto;
+	padding: 4px;
+}
+.manual-filters{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	width: 100%;
+	height: 94%;
+	background-color: #272727;
+	overflow: auto;
+	padding: 4px;
+}
+.filters:hover{
+	outline: 3px solid #303030;
+	transition: all 0.3s ease;
+}
+.manual-filters:hover{
+	outline: 3px solid #303030;
+	transition: all 0.3s ease;
+}
+.squareFilters{
+	margin: 20px;
+	width: 160px;
+	float: left;
+	text-align: left;
+}
+.imgFilter{
+	width: 160px;
+	margin-top: 10px
+}
+.canvasborder{
+	margin: 10px;
+}
+/* Divs do Intepretador */
+.figureOutside{
+	background: black;
+	position: absolute;
+	top:10px;
+	left:10px;
+}
+.figureInside{
+	background: rgba(121, 121, 121, 0.514);
+	position: absolute;
+	top:10px;
+	left:10px;
+}
+.figureInside:hover{
+	transition: all 0.4s ease;
+	background-color: #cf8c40;
+}
+
+/* Paint */
+.viewerAll{
+	height: 96vh;
+	width: 98%;
+	background-color: #313131;
+	margin: auto;
+	text-align: center;
+	position: relative;
+}
+.menuOptions{
+	position: absolute;
+	top: 3%;
+	left: 1.5%;
+	height: 38px;
+	background-color: #222222c4;
+	z-index : 3;
+	border: 10px solid #6d6d6d;
+	border-width: 0px 0px 0px 18px;
+	text-align: left;
+	padding: 2px 8px;
+	font-size: 23px;
+}
+.menuTools{
+	position: absolute;
+	top: 17%;
+	left: 1.5%;
+	height: 80%;
+	width: 20%;
+	background-color: #222222c4;
+	z-index : 3;
+	border: 10px solid #6d6d6d;
+	border-width: 0px 0px 0px 18px;
+	text-align: left;
+	padding: 2px 8px;
+	font-size: 23px;
+	overflow: auto;
+	opacity: 1;
+}
+.menuGallery{
+	text-align: center;
+	height: 60vh;
+	overflow-y: scroll;
+}
+.marginView{
+	background: white;
+	position: absolute;
+	top:50%;
+	float: left;
+	left: 50%;
+	transform: translate(-50%,-50%);
+
+}
+.divToCanvas{
+	position: absolute;
+	background-color: rgba(22,22,22,0.2);
+	top: 0;
+	left: 0;
+}
+
+
+.divToCanvas.fraught{
+	position: absolute;
+	opacity: 1;
+	background-color: rgba(22,22,22,0.2);
+	z-index : 5;
+	top: 0;
+	left: 0;
+}
+.divToCanvas.fraught:hover{
+	transition: all 0.4s ease;
+	opacity: 0.6;
+	color: white;
+	background-color: #cf8c40;
+}
+.divToCanvas.raught.active{
+	opacity: 0.6;
+	color: white;
+	background-color: #cf8c40;
+}
+
+span.active{
+	 font-weight: bold;
+	 color: #ffc36e;
+}
+.showImg{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+
+	min-width: 50%;
+
+	visibility: hidden;
+	background-color: rgb(22,22,22);
+	color: white;
+	border-radius: 10px;
+	z-index : 1000;
+}
+.squareShowImg{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(22,22,22,0.5);
+	visibility: hidden;
+	z-index : 999;
+}
+.insertsquare:hover{
+	outline: #ffc36e solid 6px;
+	transition: all 0.4s ease;
+}
+.colortext{
+	color: #ffc36e!important;
+}
+.box{
+	background-color: black;
+	position: absolute;
+}

@@ -1,0 +1,116 @@
+<div class="modal fade EditImgApi" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="">Edit Imagem</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" class="la la-remove"></span>
+              </button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-12 col-md-8">
+                  <div class="zoneDotted shadow">
+                    <div class="imgCanva" id="imgCanva">
+                    </div>
+                    <span class="imgType"></span><span class="imgResize"> </span> do seu tamanho original
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-4 area-ajust">
+                  <div class="filters shadow-sm">
+                    <h4> Filtros </h4>
+                    <hr class="shadow">
+                  </div>
+                  <div class="manual-filters shadow-sm">
+                    <h4> Manual </h4>
+                    <hr class="shadow">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-light m-btn" data-dismiss="modal">Voltar</button>
+          </div>
+        </div>
+    </div>
+</div>
+<script src="lib/js/glfx.js"></script>
+<script src="lib/js/filters.js"></script>
+<script>
+  createMenuFilter()
+  function iniModifiq (url) {
+    imgUrl = 'images/uploads/' + url
+    $('.imgCanva').html(`<img id="imgEdit" src="${imgUrl}">
+    <div class="returnTime"> <spam>Voltar ao Original </spam> </div>
+    
+    <div class="saveImg"> <i class="icofont-save"></i> </div>`)
+    $(".returnTime").click(function(){
+        applyFilter("hueSaturation(0, 0).update();")
+    })
+    $(".saveImg").click(function(){
+
+      const vctx = window.canvas.getContext('webgl');
+      const capturedImage = window.canvas.toDataURL();
+      console.log(capturedImage)
+    })
+
+    xis = getFileExtension(imgUrl)
+    $('.imgType').html("Img type: "+xis.toUpperCase())
+
+    interval1 = setInterval(function(){
+        isVisible =  $(".modal-body").is( ":visible")
+        if(isVisible){
+          const img = document.getElementById('imgEdit');
+          const wFake = img.offsetWidth
+          const wReal = getImgSize(img);
+          getPorcentDistorces(wReal,wFake);
+          dev()
+          clearInterval(interval1)
+        }
+      },100)
+  }
+
+  function getFileExtension(filename) {
+      return filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2)
+  }
+  function getImgSize(image) {
+      return image.naturalWidth
+  }
+  function getPorcentDistorces(wReal,wFake){
+      distorcion = ((wFake*100)/wReal)-100
+
+      if(wReal > wFake){
+        $(".imgResize").html("&nbsp;&nbsp; A imagem esta em "+distorcion+"%")
+      }
+      else{
+        $(".imgResize").html("&nbsp;&nbsp; A imagem esta em  "+distorcion+"%")
+      }
+  }
+
+  function dev(){
+    $(".thisCanvasForDeaht").remove()
+    try {
+        window.canvas = fx.canvas();
+    } catch (e) {
+        alert(e);
+        return;
+    }
+
+    var image = document.getElementById('imgEdit');
+    window.texture = window.canvas.texture(image);
+    window.ctx = window.canvas.getContext('2d');
+ 
+    window.canvas.width=400;
+    window.canvas.height=300;
+    
+     	
+    window.canvas.draw(window.texture).ink(0).update();
+
+    window.canvas.classList.add("imgEdit")
+    window.canvas.classList.add("thisCanvasForDeaht")
+    image.parentNode.insertBefore(window.canvas, image);
+    image.parentNode.removeChild(image);
+  }
+</script>

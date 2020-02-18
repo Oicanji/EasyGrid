@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <title>Comic</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%-include ./partials/includeCss%>
+  </head>
+	<body>
+		<div class="container-fluid">
+     <br><br>
+      <div class="row">
+        <div class="col-10 c1 shadow">
+          <div class="welcomeAndNews">
+              <%-include('./components/carrosel')%>
+          </div>
+        </div>
+        <div class="col-2 c1 shadow">
+          <div class="buttonMake options izi" id="callMakeCanvas">
+            <h6 style="font-size:20px"> Criar uma nova Grid </h6>
+            <img class='forOpizi' src='images/gridmaker.png' width="28%">
+            <p style="font-size:15px"> "Use da  ferramenta livremente." </p>
+          </div>
+          <div class="buttonReturn options izi" id="callBack">
+            <h6 style="font-size:20px"> Upar imagens para a Grid </h6>
+						<img class='forOpizi' src='images/voltando.png' width="28%">
+						<p style="font-size:15px"> "Upe mais imagens para implementar direto na sua div." </p>
+          </div>
+        </div>
+      </div>
+      <br><br>
+      <div class="prefabs shadow">
+        <h6 style="font-size:24px;text-align:center"> Prefabs Grids </h6>
+      </div>
+      <br><br>
+      <div class="gallery shadow">
+        <h6 style="font-size:24px;text-align:center"> Gallery </h6>
+        <%  imgs.forEach(function(img){ %>
+          <div class="square" onclick="modalImg('images/uploads/<%= img %>')">
+            <img class="galleryViewer" src='images/uploads/<%= img %>'>
+          </div>
+        <%  }) %>
+      </div>
+    </div>
+    <br><br>
+    <%-include ./partials/includeScript%>
+    <%-include ./modals/modalView.ejs%>
+    <script src="lib/js/canvasPrefabs.js"></script>
+    <script>
+      window.IsGrid = "no"
+      $(".gallery").niceScroll({
+        cursorwidth:10,
+        cursoropacitymin:0.4,
+        cursorcolor:'#2e2e2e',
+        cursorborder:'none',
+        cursorborderradius:4,
+        autohidemode:'leave'
+      });
+      $(".buttonMake").click(function(){
+				window.location.href = "/newgrid"
+			})
+      $("#callBack").click(function(){
+        window.location.href = "/"
+      })
+      function excluir(filepathname){
+        $.ajax({
+          type: "POST",
+          data: filepathname,
+          contentType: false,
+          cache: false,
+          processData: false,
+          url: "/deleteImg",
+        }).done(function(result) {
+          console.log(result)
+        }).fail(function() {
+          console.log("nao achou")
+        })
+      }
+      function modalImg(url){
+        window.isGrid = "no"
+        playPreviewShow(url)
+        $(".showSlide").modal('show')
+      }
+      $('#myCarousel').carousel({
+          interval: 5000,
+      })
+    </script>
+  </body>
+</html>

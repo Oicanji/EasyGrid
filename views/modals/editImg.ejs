@@ -1,0 +1,127 @@
+
+
+<div class="modal fade bd-example-modal-lg EditImg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="">Edit Imagem</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="la la-remove"></span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="area-upload">
+          <label for="upload-file" class="label-upload">
+          <i class="fas fa-cloud-upload-alt"></i>
+
+          <div class="texto">Clique ou arraste o arquivo</div>
+
+          </label>
+          <input type="file" accept="image/jpg,image" id="upload-file" multiple/>
+
+          <div class="lista-uploads">
+          </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light m-btn" data-dismiss="modal">Voltar</button>
+    </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let drop_ = document.querySelector('.area-upload #upload-file');
+drop_.addEventListener('dragenter', function(){
+	document.querySelector('.area-upload .label-upload').classList.add('highlight');
+});
+drop_.addEventListener('dragleave', function(){
+	document.querySelector('.area-upload .label-upload').classList.remove('highlight');
+});
+drop_.addEventListener('drop', function(){
+	document.querySelector('.area-upload .label-upload').classList.remove('highlight');
+});
+
+document.querySelector('#upload-file').addEventListener('change', function() {
+	var files = this.files;
+	for(var i = 0; i < files.length; i++){
+		var info = validarArquivo(files[i]);
+
+		//Criar barra
+		var barra = document.createElement("div");
+		var fill = document.createElement("div");
+		var text = document.createElement("div");
+		barra.appendChild(fill);
+		barra.appendChild(text);
+
+		barra.classList.add("barra");
+		fill.classList.add("fill");
+		text.classList.add("text");
+
+		if(info.error == undefined){
+			text.innerHTML = info.success;
+			enviarArquivo(i, barra); //Enviar
+		}else{
+			text.innerHTML = info.error;
+			barra.classList.add("error");
+		}
+
+		//Adicionar barra
+		document.querySelector('.lista-uploads').appendChild(barra);
+	};
+});
+
+function validarArquivo(file){
+	// Tipos permitidos
+	var mime_types = [ 'image/jpeg', 'image/png' ];
+
+	// Validar os tipos
+	if(mime_types.indexOf(file.type) == -1) {
+		return {"error" : "O arquivo " + file.name + " não permitido"};
+	}
+
+	// Apenas 2MB é permitido
+	if(file.size > 1024*1024*1024) {
+		return {"error" : file.name + " ultrapassou limite de 200MB"};
+	}
+
+	// Se der tudo certo
+	return {"success": "Enviando: " + file.name};
+}
+
+function enviarArquivo(indice, barra){
+	var data = new FormData();
+
+	//Adicionar arquivo
+	data.append('file', document.querySelector('#upload-file').files[indice]);
+
+  barra.querySelector(".fill").style.minWidth = "10%";
+  $.ajax({
+    type: "POST",
+    data: data,
+    contentType: false,
+    cache: false,
+    processData: false,
+  }).done(function(result) {
+    console.log(result)
+    if(result.req == 'ok'){
+      barra.querySelector(".fill").style.minWidth = "100%";
+      barra.classList.add("complete");
+      url = result.filename
+      iniModifiq(url)
+      callAlert('success','Imagem enviado com sucesso!!!',5)
+
+      $('.EditImg').modal('hide')
+      $('.EditImgApi').modal('show')
+    }else{
+      callAlert('danger','Erro, a imagem não pode ser processada pelo servidor: Extenção Invalida '+result.filename.toUpperCase(),5)
+      $('.EditImg').modal('hide')
+    }
+  })
+  .fail(function() {
+    barra.classList.add("error");
+  })
+
+}
+
+</script>

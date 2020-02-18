@@ -5,7 +5,7 @@ Olá, meu nome é Oicanji, EASYGRID é um programa que esta focado em você que 
 
 Toda a ideia começou como um projeto de conclusão de curso, mas será refatorada e melhorada contantemente por este que os fala.
 
-    Se você gostou da ideia ~~ ou mesmo quer copiar XD ~~, aqui você pode ver mais do projeto:
+    Se você gostou da ideia ou mesmo quer copiar XD, aqui você pode ver mais do projeto:
     link: https://docs.google.com/document/d/1ta9jAkI1QoEN1cP9rS9sc_6eBuzWJRgLqE7ssBnFqzI/edit?usp=sharing
     
 # Coisas a fazer:
